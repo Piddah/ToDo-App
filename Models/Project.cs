@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Controllers.Models
 {
@@ -6,8 +7,7 @@ namespace Controllers.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public List<Tag>? Tags { get; set; }
+        public string ProjectName { get; set; } = string.Empty;
         public List<Task>? Tasks { get; set; }
         public bool IsActive { get; set; } = true;
     }

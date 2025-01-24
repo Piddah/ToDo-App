@@ -90,6 +90,46 @@
       }
     },
     "/ToDo/projects/{id}": {
+      "put": {
+        "tags": [
+          "ToDo"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "delete": {
         "tags": [
           "ToDo"
@@ -319,15 +359,8 @@
             "type": "integer",
             "format": "int32"
           },
-          "name": {
+          "projectName": {
             "type": "string",
-            "nullable": true
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Tag"
-            },
             "nullable": true
           },
           "tasks": {
@@ -364,7 +397,7 @@
             "type": "integer",
             "format": "int32"
           },
-          "toDo": {
+          "taskName": {
             "type": "string",
             "nullable": true
           },
@@ -378,6 +411,13 @@
           "deadline": {
             "type": "string",
             "format": "date"
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "project": {
+            "$ref": "#/components/schemas/Project"
           }
         },
         "additionalProperties": false

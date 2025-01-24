@@ -24,7 +24,6 @@ namespace Controllers.Controllers
         {
             return _context.Projects
             .Include(p => p.Tasks)
-            .ThenInclude(t => t.Tags)
             .ToList();
         }
 

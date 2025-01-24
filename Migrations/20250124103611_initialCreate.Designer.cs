@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Controllers.Data.Migrations
+namespace Controllers.Migrations
 {
     [DbContext(typeof(ToDoContext))]
-    [Migration("20250123221023_initialCreate")]
+    [Migration("20250124103611_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />
@@ -29,7 +29,7 @@ namespace Controllers.Data.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("ProjectName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -48,17 +48,7 @@ namespace Controllers.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ProjectId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("TaskId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
-
-                    b.HasIndex("TaskId");
 
                     b.ToTable("Tags");
                 });
@@ -72,10 +62,10 @@ namespace Controllers.Data.Migrations
                     b.Property<DateOnly>("Deadline")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("ToDo")
+                    b.Property<string>("TaskName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -86,34 +76,50 @@ namespace Controllers.Data.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("Controllers.Models.Tag", b =>
+            modelBuilder.Entity("TagTask", b =>
                 {
-                    b.HasOne("Controllers.Models.Project", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("ProjectId");
+                    b.Property<int>("TagsId")
+                        .HasColumnType("INTEGER");
 
-                    b.HasOne("Controllers.Models.Task", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("TaskId");
+                    b.Property<int>("TasksId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("TagsId", "TasksId");
+
+                    b.HasIndex("TasksId");
+
+                    b.ToTable("TaskTags", (string)null);
                 });
 
             modelBuilder.Entity("Controllers.Models.Task", b =>
                 {
-                    b.HasOne("Controllers.Models.Project", null)
+                    b.HasOne("Controllers.Models.Project", "Project")
                         .WithMany("Tasks")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("TagTask", b =>
+                {
+                    b.HasOne("Controllers.Models.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Controllers.Models.Task", null)
+                        .WithMany()
+                        .HasForeignKey("TasksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Controllers.Models.Project", b =>
                 {
-                    b.Navigation("Tags");
-
                     b.Navigation("Tasks");
-                });
-
-            modelBuilder.Entity("Controllers.Models.Task", b =>
-                {
-                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

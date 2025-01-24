@@ -159,4 +159,5 @@ C:\Users\Hp\Desktop\C#\Controllers\Controllers\obj\Debug\net8.0\refint\Controlle
 C:\Users\Hp\Desktop\C#\Controllers\Controllers\obj\Debug\net8.0\Controllers.pdb
 C:\Users\Hp\Desktop\C#\Controllers\Controllers\obj\Debug\net8.0\Controllers.genruntimeconfig.cache
 C:\Users\Hp\Desktop\C#\Controllers\Controllers\obj\Debug\net8.0\ref\Controllers.dll
+C:\Users\Hp\Desktop\C#\Controllers\Controllers\obj\Debug\net8.0\Controllers.sourcelink.json
 C:\Users\Hp\Desktop\C#\Controllers\Controllers\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

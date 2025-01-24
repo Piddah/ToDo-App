@@ -47,6 +47,27 @@
   },
   {
     "ContainingType": "Controllers.Controllers.ToDoController",
+    "Method": "UpdateProject",
+    "RelativePath": "ToDo/projects/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "project",
+        "Type": "Controllers.Models.Project",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Controllers.Controllers.ToDoController",
     "Method": "DeleteProject",
     "RelativePath": "ToDo/projects/{id}",
     "HttpMethod": "DELETE",
