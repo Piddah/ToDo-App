@@ -78,12 +78,12 @@ namespace Controllers.Controllers
             return Ok(task.Tags);
         }
 
-        [HttpPost("projects/{projectId}/tasks/{taskId}/tags")]
+        [HttpPost("{projectId}/{taskId}/tags")]
         public IActionResult GetTags(int projectId, int taskId, [FromBody] Tag tag)
         {
             var task = _context.Tasks
                 .Include(t => t.Tags)
-                .FirstOrDefault(t => t.Id == taskId && t.ProjectId == projectId);
+                .FirstOrDefault(t => t.Id == tag.Id && t.ProjectId == tag.Id);
             
             if (task == null) return NotFound("Task not found.");
 
@@ -100,7 +100,7 @@ namespace Controllers.Controllers
             return Ok(task.Tags);
         }
 
-        [HttpDelete("project/tasks/tags/{id}")]
+        [HttpDelete("tags/{id}")]
         public IActionResult DeleteTag(int id)
         {
             var tag = _context.Tags.Find(id);
@@ -124,12 +124,14 @@ namespace Controllers.Controllers
             if (project == null)
             {
                 return NotFound("Project was not found.");
-            }
+            }    
+            
+            var tasks = project.Tasks.SelectMany(t => t.Tags).Distinct().ToList();
 
-            return Ok(project.Tasks);
+            return Ok(tasks);
         }
 
-        [HttpPost("projects/tasks")]
+        [HttpPost("tasks")]
         public IActionResult CreateTask(Task task)
         {
             _context.Add(task);
@@ -137,7 +139,7 @@ namespace Controllers.Controllers
             return CreatedAtAction(nameof(GetTasks), new { id = task.Id }, task);
         }
 
-        [HttpDelete("projects/tasks/{id}")]
+        [HttpDelete("tasks/{id}")]
         public IActionResult DeleteTask(int id)
         {
             var task = _context.Tasks.Find(id);

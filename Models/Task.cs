@@ -6,14 +6,14 @@ namespace Controllers.Models
 {
     public class Task
     {
-        [Key]
         public int Id { get; set; }
         public string TaskName { get; set; } = string.Empty;
-
         public List<Tag>? Tags { get; set; } = new List<Tag>();
-
         public DateOnly Deadline { get; set; }
+
+        [JsonIgnore]
         public int ProjectId { get; set; }
-        public Project Project { get; set; }
+        [JsonIgnore]
+        public Project? Project { get; set; }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Controllers.Migrations
 {
     [DbContext(typeof(ToDoContext))]
-    [Migration("20250124103611_initialCreate")]
+    [Migration("20250205184005_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />
@@ -44,9 +44,12 @@ namespace Controllers.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("TagName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 

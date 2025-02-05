@@ -124,12 +124,14 @@ namespace Controllers.Controllers
             if (project == null)
             {
                 return NotFound("Project was not found.");
-            }
+            }    
+            
+            var tasks = project.Tasks.SelectMany(t => t.Tags).Distinct().ToList();
 
-            return Ok(project.Tasks);
+            return Ok(tasks);
         }
 
-        [HttpPost("projects/tasks")]
+        [HttpPost("tasks")]
         public IActionResult CreateTask(Task task)
         {
             _context.Add(task);
@@ -137,7 +139,7 @@ namespace Controllers.Controllers
             return CreatedAtAction(nameof(GetTasks), new { id = task.Id }, task);
         }
 
-        [HttpDelete("projects/tasks/{id}")]
+        [HttpDelete("tasks/{id}")]
         public IActionResult DeleteTask(int id)
         {
             var task = _context.Tasks.Find(id);
