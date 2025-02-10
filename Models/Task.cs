@@ -8,6 +8,7 @@ namespace Controllers.Models
     {
         public int Id { get; set; }
         public string TaskName { get; set; } = string.Empty;
+        [JsonIgnore]
         public List<Tag>? Tags { get; set; } = new List<Tag>();
         public DateOnly Deadline { get; set; }
 

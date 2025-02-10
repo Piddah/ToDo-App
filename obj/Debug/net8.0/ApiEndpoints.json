@@ -36,25 +36,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
-    "Method": "DeleteTag",
-    "RelativePath": "ToDo/project/tasks/tags/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Controllers.Controllers.ToDoController",
+    "ContainingType": "Controllers.Controllers.ProjectsController",
     "Method": "GetProjects",
-    "RelativePath": "ToDo/projects",
+    "RelativePath": "Projects/projects",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -72,9 +56,9 @@
     ]
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
+    "ContainingType": "Controllers.Controllers.ProjectsController",
     "Method": "CreateProject",
-    "RelativePath": "ToDo/projects",
+    "RelativePath": "Projects/projects",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -88,9 +72,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
+    "ContainingType": "Controllers.Controllers.ProjectsController",
     "Method": "UpdateProject",
-    "RelativePath": "ToDo/projects/{id}",
+    "RelativePath": "Projects/projects/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -109,9 +93,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
+    "ContainingType": "Controllers.Controllers.ProjectsController",
     "Method": "DeleteProject",
-    "RelativePath": "ToDo/projects/{id}",
+    "RelativePath": "Projects/projects/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -125,15 +109,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
-    "Method": "GetTasks",
-    "RelativePath": "ToDo/projects/{projectId}/tasks",
-    "HttpMethod": "GET",
+    "ContainingType": "Controllers.Controllers.TagsController",
+    "Method": "DeleteTag",
+    "RelativePath": "Tags/project/tasks/tags/{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "projectId",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -141,9 +125,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
+    "ContainingType": "Controllers.Controllers.TagsController",
     "Method": "GetTags",
-    "RelativePath": "ToDo/projects/{projectId}/tasks/{taskId}/tags",
+    "RelativePath": "Tags/projects/{projectId}/tasks/{taskId}/tags",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -162,9 +146,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
+    "ContainingType": "Controllers.Controllers.TagsController",
     "Method": "GetTags",
-    "RelativePath": "ToDo/projects/{projectId}/tasks/{taskId}/tags",
+    "RelativePath": "Tags/projects/{projectId}/tasks/{taskId}/tags",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -188,9 +172,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
+    "ContainingType": "Controllers.Controllers.TasksController",
     "Method": "CreateTask",
-    "RelativePath": "ToDo/projects/tasks",
+    "RelativePath": "Tasks/{projectId}/tasks",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -199,14 +183,35 @@
         "Name": "task",
         "Type": "Controllers.Models.Task",
         "IsRequired": true
+      },
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Controllers.Controllers.ToDoController",
+    "ContainingType": "Controllers.Controllers.TasksController",
+    "Method": "GetTasks",
+    "RelativePath": "Tasks/projects/{projectId}/tasks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Controllers.Controllers.TasksController",
     "Method": "DeleteTask",
-    "RelativePath": "ToDo/projects/tasks/{id}",
+    "RelativePath": "Tasks/projects/tasks/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,

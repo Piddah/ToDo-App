@@ -5,6 +5,136 @@
     "version": "1.0"
   },
   "paths": {
+    "/Projects/projects": {
+      "get": {
+        "tags": [
+          "Projects"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Project"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Projects"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Projects/projects/{id}": {
+      "put": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Project"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Projects"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/": {
       "get": {
         "tags": [
@@ -50,140 +180,10 @@
         }
       }
     },
-    "/ToDo/projects": {
+    "/Tags/projects/{projectId}/tasks/{taskId}/tags": {
       "get": {
         "tags": [
-          "ToDo"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Project"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Project"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Project"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "ToDo"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Project"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Project"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Project"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ToDo/projects/{id}": {
-      "put": {
-        "tags": [
-          "ToDo"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Project"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Project"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Project"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "ToDo"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/ToDo/projects/{projectId}/tasks/{taskId}/tags": {
-      "get": {
-        "tags": [
-          "ToDo"
+          "Tags"
         ],
         "parameters": [
           {
@@ -213,7 +213,7 @@
       },
       "post": {
         "tags": [
-          "ToDo"
+          "Tags"
         ],
         "parameters": [
           {
@@ -261,10 +261,10 @@
         }
       }
     },
-    "/ToDo/project/tasks/tags/{id}": {
+    "/Tags/project/tasks/tags/{id}": {
       "delete": {
         "tags": [
-          "ToDo"
+          "Tags"
         ],
         "parameters": [
           {
@@ -284,10 +284,10 @@
         }
       }
     },
-    "/ToDo/projects/{projectId}/tasks": {
+    "/Tasks/projects/{projectId}/tasks": {
       "get": {
         "tags": [
-          "ToDo"
+          "Tasks"
         ],
         "parameters": [
           {
@@ -307,10 +307,21 @@
         }
       }
     },
-    "/ToDo/projects/tasks": {
+    "/Tasks/{projectId}/tasks": {
       "post": {
         "tags": [
-          "ToDo"
+          "Tasks"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -338,10 +349,10 @@
         }
       }
     },
-    "/ToDo/projects/tasks/{id}": {
+    "/Tasks/projects/tasks/{id}": {
       "delete": {
         "tags": [
-          "ToDo"
+          "Tasks"
         ],
         "parameters": [
           {
@@ -411,13 +422,6 @@
           },
           "taskName": {
             "type": "string",
-            "nullable": true
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Tag"
-            },
             "nullable": true
           },
           "deadline": {
